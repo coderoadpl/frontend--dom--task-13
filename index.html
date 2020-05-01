@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Document</title>
+
+    <style>
+        .div-1 {
+            background-color: red;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .div-2 {
+            background-color: yellow;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .div-3 {
+            background-color: blue;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="div-1">
+        <div class="div-2">
+            <div class="div-3">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const div1 = document.querySelector('.div-1')
+        const div2 = document.querySelector('.div-2')
+        const div3 = document.querySelector('.div-3')
+
+        window.addEventListener(
+            'click',
+            function () {
+                console.log('bubbling -window')
+            }
+        )
+        document.addEventListener(
+            'click',
+            function () {
+                console.log('bubbling -document')
+            }
+        )
+        document.body.addEventListener(
+            'click',
+            function () {
+                console.log('bubbling -body')
+            }
+        )
+        div1.addEventListener(
+            'click',
+            function () {
+                console.log('bubbling -div-1 (red)')
+            }
+        )
+        div2.addEventListener(
+            'click',
+            function () {
+                console.log('bubbling -div-2 (yellow)')
+            }
+        )
+        div3.addEventListener(
+            'click',
+            function () {
+                event.stopPropagation()
+                console.log('bubbling -div-3 (blue)')
+            }
+        )
+
+        window.addEventListener(
+            'click',
+            function () {
+                console.log('capturing - window')
+            },
+            true
+        )
+        document.addEventListener(
+            'click',
+            function () {
+                console.log('capturing - document')
+            },
+            true
+        )
+        document.body.addEventListener(
+            'click',
+            function () {
+                console.log('capturing - body')
+            },
+            true
+        )
+        div1.addEventListener(
+            'click',
+            function () {
+                console.log('capturing - div-1 (red)')
+            },
+            true
+        )
+        div2.addEventListener(
+            'click',
+            function () {
+                console.log('capturing - div-2 (yellow)')
+            },
+            true
+        )
+        div3.addEventListener(
+            'click',
+            function () {
+                console.log('capturing - div-3 (blue)')
+            },
+            true
+        )
+
+    </script>
+
+</body>
+
+</html>
